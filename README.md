@@ -1,6 +1,72 @@
-### Hi there 👋
-We are MWIT30/8, our existence are based on 24 classmates in [Mahidol Wittayanusorn School](https://www.mwit.ac.th/). Let's say that we are specialized in natural science and have members that are open to collaborating on projects as long as it's not during the exam. Feel free to sneak at us and connect with us here:
+# Qwik App ⚡️
 
-[![Github Badge](https://img.shields.io/badge/-@mwit30--8-lightgrey?style=flat&logo=github&logoColor=white&link=https://github.com/mwit30-8)](https://github.com/mwit30-8)
-[![Instagram Badge](https://img.shields.io/badge/-@mwit30.8-purple?style=flat&logo=instagram&logoColor=white&link=https://instagram.com/mwit30.8)](https://www.instagram.com/mwit30.8)
-[![Youtube Badge](https://img.shields.io/badge/-Wanorn_Family-darkred?style=flat&logo=youtube&logoColor=white&link=https://www.youtube.com/c/UC2V09OIebePuFHNzPry1IyQ)](https://www.youtube.com/channel/UC2V09OIebePuFHNzPry1IyQ)
+- [Qwik Docs](https://qwik.builder.io/)
+- [Discord](https://qwik.builder.io/chat)
+- [Qwik Github](https://github.com/BuilderIO/qwik)
+- [@QwikDev](https://twitter.com/QwikDev)
+- [Vite](https://vitejs.dev/)
+- [Partytown](https://partytown.builder.io/)
+- [Mitosis](https://github.com/BuilderIO/mitosis)
+- [Builder.io](https://www.builder.io/)
+
+---
+
+## Project Structure
+
+Inside of you project, you'll see the following directories and files:
+
+```
+├── public/
+│   └── ...
+└── src/
+    ├── components/
+    │   └── ...
+    └── routes/
+        └── ...
+```
+
+- `src/routes`: Provides the directory based routing, which can include a hierarchy of `layout.tsx` layout files, and `index.tsx` files as the page. Additionally, `index.ts` files are endpoints. Please see the [routing docs](https://qwik.builder.io/qwikcity/routing/overview/) for more info.
+
+- `src/components`: Recommended directory for components.
+
+- `public`: Any static assets, like images, can be placed in the public directory. Please see the [Vite public directory](https://vitejs.dev/guide/assets.html#the-public-directory) for more info.
+
+## Add Integrations
+
+Use the `yarn qwik add` command to add other integrations. Some examples of integrations include as a Cloudflare, Netlify or Vercel server, and the Static Site Generator (SSG).
+
+```
+yarn qwik add
+```
+
+## Development
+
+Development mode uses [Vite's development server](https://vitejs.dev/). For Qwik during development, the `dev` command will also server-side render (SSR) the output. The client-side development modules loaded by the browser.
+
+```
+yarn dev
+```
+
+> Note: during dev mode, Vite will request many JS files, which does not represent a Qwik production build.
+
+## Preview
+
+The preview command will create a production build of the client modules, production build of `src/entry.preview.tsx`, and create a local server. The preview server is only for convenience to locally preview a production build, but it should not be used as a production server.
+
+```
+yarn preview
+```
+
+## Production
+
+The production build should generate the client and server modules by running both client and server build commands. Additionally, the build command will use Typescript run a type check on the source.
+
+```
+yarn build
+```
+
+## Static Site Generator (Node.js)
+
+```
+yarn ssg
+```

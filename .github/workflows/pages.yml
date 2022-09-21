@@ -1,5 +1,4 @@
-# Sample workflow for building and deploying a Jekyll site to GitHub Pages
-name: Deploy Jekyll with GitHub Pages dependencies preinstalled
+name: Deploy Qwik with GitHub Pages
 
 on:
   # Runs on pushes targeting the default branch
@@ -21,21 +20,56 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+      - name: Restore cache
+        uses: actions/cache@v3
+        with:
+          path: |
+            ./node_modules
+          key: ${{ runner.os }}-${{ hashFiles('./yarn.lock') }}
+      - name: Install dependencies
+        run: yarn install
+      - name: Linting
+        run: yarn lint
+      - name: Format checking
+        run: yarn fmt.check
+
   # Build job
   build:
     runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    needs: ["lint"]
     steps:
       - name: Checkout
         uses: actions/checkout@v3
       - name: Setup Pages
         uses: actions/configure-pages@v1
-      - name: Build with Jekyll
-        uses: actions/jekyll-build-pages@v1
+      - uses: actions/setup-node@v3
         with:
-          source: ./
-          destination: ./_site
+          node-version: 16
+      - name: Restore cache
+        uses: actions/cache@v3
+        with:
+          path: |
+            ./node_modules
+          key: ${{ runner.os }}-${{ hashFiles('./yarn.lock') }}
+      - name: Install dependencies
+        run: yarn install
+      - name: Build Qwik
+        run: yarn build
+      - name: Build GitHub Pages
+        run: yarn start
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
+        with:
+          path: "./dist"
 
   # Deployment job
   deploy:
