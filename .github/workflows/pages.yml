@@ -63,8 +63,6 @@ jobs:
       - name: Install dependencies
         run: yarn install
       - name: Build Qwik
-        env:
-          ANALYTICS_MEASUREMENT_ID: ${{ secrets.ANALYTICS_MEASUREMENT_ID }}
         run: yarn build
       - name: Build GitHub Pages
         run: yarn ssg
