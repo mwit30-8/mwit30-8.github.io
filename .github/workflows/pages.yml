@@ -67,7 +67,7 @@ jobs:
           ANALYTICS_MEASUREMENT_ID: ${{ secrets.ANALYTICS_MEASUREMENT_ID }}
         run: yarn build
       - name: Build GitHub Pages
-        run: yarn start
+        run: yarn ssg
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:
